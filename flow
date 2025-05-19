@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+// ANSI colors
+$colors = [
+    'green' => "\033[32m",
+    'yellow' => "\033[33m",
+    'blue' => "\033[34m",
+    'red' => "\033[31m",
+    'reset' => "\033[0m"
+];
+
+// type "php flow ser"
+$command = $argv[1] ?? null;
+
+switch ($command) {
+    case 'ser':
+        $host = 'localhost';
+        $port = '2002';
+        $entry = 'index.php';
+
+        echo "{$colors['green']}🚀 Starting PHP server at {$colors['blue']}http://$host:$port{$colors['reset']}\n";
+        echo "{$colors['yellow']}⏹ Press Ctrl+C to stop the server.{$colors['reset']}\n\n";
+
+        // Detect OS to redirect stderr properly
+        $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        $redirect = $isWindows ? '2>nul' : '2>/dev/null';
+
+        passthru("php -S $host:$port $entry $redirect");
+        break;
+
+    default:
+        echo "{$colors['red']}❌ Unknown command: {$colors['yellow']}$command{$colors['reset']}\n";
+        echo "{$colors['blue']}📘 Usage: php flow ser{$colors['reset']}\n";
+        break;
+}
