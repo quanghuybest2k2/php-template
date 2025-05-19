@@ -1,7 +1,5 @@
 # PHP Template
 
-![GitHub stars](https://img.shields.io/github/stars/quanghuybest2k2/php-template) ![License](https://img.shields.io/github/license/quanghuybest2k2/php-template)
-
 `php template` là một template PHP mã nguồn mở, được thiết kế để giúp xây dựng ứng dụng web một cách nhanh chóng, dễ dàng mở rộng và dễ bảo trì.
 
 ---
