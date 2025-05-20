@@ -5,19 +5,19 @@
         <form method="POST" action="/store" class="space-y-5">
             <div>
                 <label class="block text-gray-700 font-medium mb-1" for="name">Tên</label>
-                <input type="text" id="name" name="name" required
+                <input type="text" id="name" name="name"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <div>
                 <label class="block text-gray-700 font-medium mb-1" for="email">Email</label>
-                <input type="email" id="email" name="email" required
+                <input type="text" id="email" name="email"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <div>
                 <label class="block text-gray-700 font-medium mb-1" for="password">Mật khẩu</label>
-                <input type="password" id="password" name="password" required
+                <input type="password" id="password" name="password"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 

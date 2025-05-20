@@ -17,6 +17,7 @@
   "require": {
     "monolog/monolog": "^3.9",
     "php": ">=8.0",
-    "filp/whoops": "^2.18"
+    "filp/whoops": "^2.18",
+    "respect/validation": "^2.4"
   }
 }

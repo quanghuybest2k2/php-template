@@ -2,10 +2,11 @@
 
 namespace App\controllers;
 
-use App\services\UserService;
+use Exception;
 use Core\View;
 use Core\Redirect;
-use Exception;
+use App\services\UserService;
+use App\validators\UserValidator;
 
 class UserController
 {
@@ -74,8 +75,13 @@ class UserController
             'password' => $_POST['password'] ?? null,
         ];
 
-        if (!isset($data['name'], $data['email'], $data['password'])) {
-            echo "Invalid input";
+        // Validate data
+        $errors = UserValidator::validate($data);
+        if (!empty($errors)) {
+            Redirect::with('/create', [
+                'validation_errors' => $errors,
+                'old' => $data // Keep old input data
+            ]);
             return;
         }
 
