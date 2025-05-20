@@ -40,9 +40,11 @@ class UserController
      */
     public function list(): string
     {
+        $page = $_GET['page'] ?? 1;
+        $perPage = $_GET['perPage'] ?? 10;
         try {
-            $users = $this->service->getAllUsers();
-            return View::renderWithLayout('user/list', ['title' => 'Danh sách người dùng', 'users' => $users], 'layout');
+            $data = $this->service->getAllUsers($page, $perPage);
+            return View::renderWithLayout('user/list', ['title' => 'Danh sách người dùng', 'data' => $data], 'layout');
         } catch (Exception $e) {
             throw new Exception("user list: " . $e->getMessage());
         }

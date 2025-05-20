@@ -32,12 +32,14 @@ class UserService
 
     /**
      * Get all users
-     *
-     * @return array
+     * 
+     * @param int $page
+     * @param int $perPage
+     * @return array|LengthAwarePaginator
      */
-    public function getAllUsers(): array
+    public function getAllUsers($page, $perPage)
     {
-        $user = $this->repo->findAll();
+        $user = $this->repo->findAll($page, $perPage);
         if (!$user) {
             throw new Exception("Hiện tại không có người dùng nào");
         }

@@ -14,8 +14,7 @@ class UserValidator
         // Define validators with custom messages
         $validators = [
             'name' => v::notEmpty()->setTemplate('Họ tên không được để trống')
-                ->length(3, 50)->setTemplate('Họ tên phải có độ dài từ 3 đến 50 ký tự')
-                ->alpha(' ')->setTemplate('Họ tên chỉ được chứa chữ cái và khoảng trắng'),
+                ->length(3, 50)->setTemplate('Họ tên phải có độ dài từ 3 đến 50 ký tự'),
 
             'email' => v::notEmpty()->setTemplate('Email không được để trống')
                 ->email()->setTemplate('Email không hợp lệ'),
