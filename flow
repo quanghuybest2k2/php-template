@@ -1,6 +1,10 @@
 #!/usr/bin/env php
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\core\Command;
+
 // ANSI colors
 $colors = [
     'green' => "\033[32m",
@@ -12,6 +16,8 @@ $colors = [
 
 // type "php flow ser"
 $command = $argv[1] ?? null;
+
+$cmd = new Command($colors);
 
 switch ($command) {
     case 'ser':
@@ -29,8 +35,27 @@ switch ($command) {
         passthru("php -S $host:$port $entry $redirect");
         break;
 
+    case (str_starts_with($command, 'make:controller') ? true : false):
+        $className = $argv[2] ?? null;;
+        $cmd->makeController($className);
+        break;
+
+    case (str_starts_with($command, 'make:model') ? true : false):
+        $className = $argv[2] ?? null;
+        $cmd->makeModel($className);
+        break;
+
+    case (str_starts_with($command, 'make:service') ? true : false):
+        $className = $argv[2] ?? null;
+        $cmd->makeService($className);
+        break;
+
+    case (str_starts_with($command, 'make:repository') ? true : false):
+        $className = $argv[2] ?? null;
+        $cmd->makeRepository($className);
+        break;
+
     default:
-        echo "{$colors['red']}❌ Unknown command: {$colors['yellow']}$command{$colors['reset']}\n";
-        echo "{$colors['blue']}📘 Usage: php flow ser{$colors['reset']}\n";
+        echo "{$colors['red']}❌ Unknown command: {$colors['reset']}$command\n";
         break;
 }
