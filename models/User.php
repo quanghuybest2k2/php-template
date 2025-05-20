@@ -4,13 +4,14 @@ namespace App\models;
 
 class User implements \JsonSerializable
 {
-    public $id, $name, $email, $password;
+    public $id, $name, $email, $created_at, $password;
 
-    public function __construct($id = null, $name = null, $email = null, $password = null)
+    public function __construct($id = null, $name = null, $email = null, $created_at = null, $password = null)
     {
         $this->id       = $id;
         $this->name     = $name;
         $this->email    = $email;
+        $this->created_at = $created_at;
         $this->password = $password;
     }
 
@@ -26,6 +27,7 @@ class User implements \JsonSerializable
             'id'    => $this->id,
             'name'  => $this->name,
             'email' => $this->email,
+            'created_at' => $this->created_at,
         ];
     }
 }

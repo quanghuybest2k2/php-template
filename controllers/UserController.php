@@ -4,7 +4,7 @@ namespace App\controllers;
 
 use App\services\UserService;
 use App\core\View;
-use App\utils\Logger;
+use App\core\Redirect;
 use Exception;
 
 class UserController
@@ -20,13 +20,13 @@ class UserController
      * Show user by id
      *
      * @param int $id
-     * @return void
+     * @return string
      */
-    public function show($id)
+    public function show($id): string
     {
         try {
             $user = $this->service->getUserById($id);
-            return View::renderWithLayout('user/detail', ['user' => $user], 'layout');
+            return View::renderWithLayout('user/detail', ['title' => 'Xem chi tiết', 'user' => $user], 'layout');
         } catch (Exception $e) {
             throw new Exception("user show: " . $e->getMessage());
         }
@@ -35,24 +35,38 @@ class UserController
     /**
      * List all users
      *
-     * @return void
+     * @return string
      */
-    public function list()
+    public function list(): string
     {
         try {
             $users = $this->service->getAllUsers();
-            return View::renderWithLayout('user/list', ['users' => $users], 'layout');
+            return View::renderWithLayout('user/list', ['title' => 'Danh sách người dùng', 'users' => $users], 'layout');
         } catch (Exception $e) {
             throw new Exception("user list: " . $e->getMessage());
         }
     }
 
     /**
+     * return create user view
+     *
+     * @return string
+     */
+    public function create(): string
+    {
+        try {
+            return View::renderWithLayout('user/create', ['title' => 'Tạo người dùng'], 'layout');
+        } catch (Exception $e) {
+            throw new Exception("user create: " . $e->getMessage());
+        }
+    }
+
+    /**
      * Create a new user
      *
-     * @return void
+     * @return string
      */
-    public function store(): void
+    public function store()
     {
         $data = [
             'name' => $_POST['name'] ?? null,
@@ -67,10 +81,13 @@ class UserController
 
         try {
             $user = $this->service->createUser($data['name'], $data['email'], $data['password']);
+            if (!$user) {
+                Redirect::with('/create', ['error' => 'Thêm người dùng thất bại']);
+                return;
+            }
+            Redirect::with('/users', ['message' => 'Thêm người dùng thành công']);
         } catch (Exception $e) {
-            throw new Exception("user create: " . $e->getMessage());
+            Redirect::with('/create', ['error' => $e->getMessage()]);
         }
-
-        // ResponseHandler::responseSuccess($user, "User created successfully", 201);
     }
 }

@@ -11,6 +11,9 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Sweet Alert 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Optional: Tailwind config (for customization) -->
     <script>
         tailwind.config = {
@@ -26,6 +29,7 @@
 </head>
 
 <body>
+    <?php include __DIR__ . '/partials/flash.php'; ?>
     <?= $content ?>
 </body>
 

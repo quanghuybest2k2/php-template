@@ -25,7 +25,7 @@ class UserService
     {
         $user = $this->repo->findById($id);
         if (!$user) {
-            throw new Exception("User not found");
+            throw new Exception("Không tìm thấy người dùng với id: $id");
         }
         return $user;
     }
@@ -39,7 +39,7 @@ class UserService
     {
         $user = $this->repo->findAll();
         if (!$user) {
-            throw new Exception("No users found");
+            throw new Exception("Hiện tại không có người dùng nào");
         }
         return $user;
     }
@@ -52,13 +52,13 @@ class UserService
      * @param string $password
      * @return User
      */
-    public function createUser($name, $email, $password)
+    public function createUser($name, $email, $password): User
     {
         $existingUser = $this->repo->findByEmail($email);
         if ($existingUser) {
-            throw new Exception("User with email: $email already exists");
+            throw new Exception("Người dùng: $email đã tồn tại");
         }
         $hashed = password_hash($password, PASSWORD_BCRYPT);
-        return $this->repo->create(new User(null, $name, $email, $hashed));
+        return $this->repo->create(new User(null, $name, $email, null, $hashed));
     }
 }

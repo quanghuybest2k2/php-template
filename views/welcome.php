@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Example</title>
+    <title>Welcome to FlowPHP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
@@ -32,7 +32,7 @@
             <?= htmlspecialchars($greeting) ?>
         </h1>
         <p class="text-lg mb-8">
-            You are running <span class="font-semibold">Example</span> – a minimal, elegant PHP framework.
+            You are running <span class="font-semibold">FlowPHP</span> – a minimal, elegant PHP framework.
         </p>
         <a href="https://github.com/quanghuybest2k2/flowphp" target="__blank" class="inline-block px-6 py-3 bg-primary text-white rounded-lg shadow-md hover:bg-black transition">
             Get Started on GitHub

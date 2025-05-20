@@ -5,6 +5,10 @@ use App\routes\Web;
 use App\utils\Logger;
 use App\config\Env;
 
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
 Env::loadEnv('.env');
 
 // config access static files
@@ -32,9 +36,7 @@ try {
     Logger::error('Error: ' . $e->getMessage() . ' in ' . $e->getFile() . ' on line ' . $e->getLine());
     $debug_mode = getenv('DEBUG_MODE');
     if ($debug_mode == 'true') {
-        // Display the error message
-        echo "<h1>Error: {$e->getMessage()}</h1>";
-        echo "<pre>{$e->getTraceAsString()}</pre>";
+        throw $e;
     } else {
         // Display a generic error message
         http_response_code(500);

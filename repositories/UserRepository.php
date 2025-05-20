@@ -13,7 +13,7 @@ class UserRepository
         $stmt->execute([$id]);
         $row = $stmt->fetch();
 
-        return $row ? new User($row['id'], $row['name'], $row['email']) : null;
+        return $row ? new User($row['id'], $row['name'], $row['email'], $row['created_at']) : null;
     }
 
     public function findByEmail(string $email): ?User
@@ -22,7 +22,7 @@ class UserRepository
         $stmt->execute([$email]);
         $row = $stmt->fetch();
 
-        return $row ? new User($row['id'], $row['name'], $row['email']) : null;
+        return $row ? new User($row['id'], $row['name'], $row['email'], $row['created_at']) : null;
     }
 
     public function findAll(): array
@@ -33,7 +33,7 @@ class UserRepository
 
         $users = [];
         foreach ($rows as $row) {
-            $users[] = new User($row['id'], $row['name'], $row['email']);
+            $users[] = new User($row['id'], $row['name'], $row['email'], $row['created_at']);
         }
 
         return $users;
