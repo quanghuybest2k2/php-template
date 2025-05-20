@@ -1,10 +1,10 @@
 <?php
 
-namespace App\routes;
+namespace Route;
 
-use App\routes\Router;
+use Route\Router;
 use App\controllers\UserController;
-use App\core\View;
+use Core\View;
 
 class Web
 {

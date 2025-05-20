@@ -1,6 +1,6 @@
 <?php
 
-namespace App\core;
+namespace Core;
 
 class Command
 {
@@ -25,7 +25,7 @@ class Command
             exit(1);
         }
 
-        $directory = __DIR__ . '/../controllers';
+        $directory = __DIR__ . '/../app/controllers';
         $filePath = "$directory/{$className}.php";
 
         if (!is_dir($directory)) {
@@ -69,7 +69,7 @@ class Command
             exit(1);
         }
 
-        $directory = __DIR__ . '/../models';
+        $directory = __DIR__ . '/../app/models';
         $filePath = "$directory/{$className}.php";
 
         if (!is_dir($directory)) {
@@ -110,7 +110,7 @@ class Command
             exit(1);
         }
 
-        $directory = __DIR__ . '/../services';
+        $directory = __DIR__ . '/../app/services';
         $filePath = "$directory/{$className}.php";
 
         if (!is_dir($directory)) {
@@ -151,7 +151,7 @@ class Command
             exit(1);
         }
 
-        $directory = __DIR__ . '/../repositories';
+        $directory = __DIR__ . '/../app/repositories';
         $filePath = "$directory/{$className}.php";
 
         if (!is_dir($directory)) {

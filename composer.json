@@ -5,7 +5,13 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "App\\": "./"
+      "App\\": "./app",
+      "Config\\": "./config",
+      "Core\\": "./core",
+      "Database\\": "./database",
+      "Route\\": "./routes",
+      "Tests\\": "./tests",
+      "Util\\": "./utils"
     }
   },
   "require": {

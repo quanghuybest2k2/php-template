@@ -3,8 +3,8 @@
 namespace App\controllers;
 
 use App\services\UserService;
-use App\core\View;
-use App\core\Redirect;
+use Core\View;
+use Core\Redirect;
 use Exception;
 
 class UserController

@@ -3,7 +3,7 @@
 namespace App\repositories;
 
 use App\models\User;
-use App\config\Database;
+use Config\Database;
 
 class UserRepository
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\routes;
+namespace Route;
 
 class Router
 {
@@ -85,6 +85,7 @@ class Router
                 return;
             }
         }
+        throw new \Exception("Route $uri not found");
     }
 
     /**

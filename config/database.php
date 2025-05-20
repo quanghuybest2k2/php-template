@@ -1,10 +1,10 @@
 <?php
 
-namespace App\config;
+namespace Config;
 
 use PDO;
 use PDOException;
-use App\config\Env;
+use Config\Env;
 
 class Database
 {

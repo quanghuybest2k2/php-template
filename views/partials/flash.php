@@ -1,6 +1,6 @@
 <?php
 
-use App\core\Session;
+use Core\Session;
 ?>
 
 <?php if (Session::hasFlash('message')): ?>

@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use App\core\Command;
+use Core\Command;
 
 // ANSI colors
 $colors = [

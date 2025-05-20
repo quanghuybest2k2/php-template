@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-use App\routes\Web;
-use App\utils\Logger;
-use App\config\Env;
+use Route\Web;
+use Util\Logger;
+use Config\Env;
 
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
